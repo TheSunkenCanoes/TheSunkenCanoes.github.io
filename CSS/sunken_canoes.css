@@ -29,7 +29,7 @@ display: block;
 /* Dropdown Content (Hidden by Default) */
 .dropdown-content {
   display: none;
-  position: absolute;
+  position: relative;
   width:100%;
   cursor: pointer;
   background-color: #80ffff;
@@ -44,7 +44,7 @@ display: block;
   width: 100%;
   color: black;
   padding: 12px 20px;
-  position: absolute;
+  position: relative;
   text-decoration: none;
   cursor: pointer;
   display: block;
