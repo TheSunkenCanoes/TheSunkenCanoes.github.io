@@ -11,7 +11,7 @@ function clearMain(){
 function home(){
 	  clearMain();
 	  window.history.replaceState(null, null, "?page=home");
-	  addParagraph("The Sunken Canoes is a band.");
+	  addParagraph("The Sunken Canoes is a socially-distanced band based in Ottawa Ontario, started in the summer of 2020. We are currently working on creating our first album.");
 }
 
 function music(){
