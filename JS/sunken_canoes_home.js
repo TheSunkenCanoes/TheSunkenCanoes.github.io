@@ -23,6 +23,9 @@ function music(){
 	
 	addParagraph("FALLING\nThis sad song is about falling. It is still a work in progress.");
 	addSong("Falling.mp3");
+	
+	addParagraph("THINK I LOVE YOU\nThis is a sweet love song about love. It is still a work in progress, and the metronome will not be included in the final version.");
+	addSong("think I love you.mp3");
 }
 
 function merch(){
