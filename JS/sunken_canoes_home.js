@@ -2,10 +2,10 @@
  * 
  */
 
-
 /*clearMain() removes everything that is loaded within the main_stuff div*/
 function clearMain(){
 	document.getElementById("main_stuff").innerHTML = "";
+	document.getElementById("form").hidden = true;
 }
 
 function home(){
@@ -39,7 +39,28 @@ function merch(){
 function contact(){
 	clearMain();	
 	window.history.replaceState(null, null, "?page=contact");
-	addParagraph("There is currently no way to contact us.");
+	addParagraph("If you would like to contact us, leave a message.");
+	
+	document.getElementById("form").removeAttribute("hidden");
+	
+	/*var form = document.createElement('form');
+	form.innerText = '<form'+
+	  'action="https://formspree.io/f/mqkgbwwo"' +
+		  'method="POST"' +
+		'>' +
+		  '<label>' +
+		    'Your contact info (optional):' +
+		    '<input type="text" name="_replyto">' +
+		  '</label>' +
+		  '<label>' +
+		    'Your message:'+
+		    '<textarea name="message"></textarea>'+
+		  '</label>'+
+		  '<button type="submit">Send</button>' +
+		'</form>';
+	
+	document.getElementById("main_stuff").innerHTML = form;*/
+	
 }
 
 function addSong(name){

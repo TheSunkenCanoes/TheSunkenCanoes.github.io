@@ -16,7 +16,7 @@
   <div class="dropdown-content">
   	<button  class="dropdown-content" onclick="home()" id="home_btn" >Home</button>
   	<button  class="dropdown-content" onclick="music()" id="music_btn" >Music</button>
-<!--  	<button  class="dropdown-content" onclick="contact()" id="contact_btn" >Contact</button> -->
+	<button  class="dropdown-content" onclick="contact()" id="contact_btn" >Contact</button>
 <!--    	<button  onclick="merch()" id="merch_btn" type="button">Merch</button> -->
   </div>
 </div>
@@ -25,7 +25,26 @@
 
 <div id = "main_stuff"></div>
 
+<form 
+  hidden
+  action="https://formspree.io/f/mqkgbwwo"
+  method="POST"
+  id = "form"
+>
+  <label>
+    Your contact information (optional):
+    <input type="text" name="_replyto">
+  </label>
+  <div></div>
+  <label>
+    Your message:					   
+    <textarea name="message"></textarea>
+  </label>
 
+  <!-- your other form fields go here -->
+<div></div>
+  <button type="submit">Send</button>
+</form>
 
 
 <script src="JS/sunken_canoes_home.js?version=1"></script>
