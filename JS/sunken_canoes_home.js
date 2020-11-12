@@ -6,6 +6,7 @@
 function clearMain(){
 	document.getElementById("main_stuff").innerHTML = "";
 	document.getElementById("form").hidden = true;
+	document.getElementById("paypal").hidden = true;
 }
 
 function home(){
@@ -28,12 +29,14 @@ function music(){
 	addSong("think I love you.mp3");
 }
 
-function merch(){
+function donate(){
 	clearMain();
-	window.history.replaceState(null, null, "?page=merch");
-	addParagraph("We currently have no merch. If you would like to support us financially, please give me money");
+	window.history.replaceState(null, null, "?page=donate");
 	
-	console.log()
+	
+	addParagraph("All donations will go towards helping us create new music.");
+	
+	document.getElementById("paypal").removeAttribute("hidden");	
 }
 
 function contact(){
@@ -58,7 +61,7 @@ function addParagraph(text){
 	  document.getElementById("main_stuff").appendChild(para);	  
 }
 
-//TODO: get page to detect if one of the things is open
+//Checks variables in URL and sets page up appropriately
 function setup(){
 	
 	//get the parameters from the URL
@@ -66,7 +69,7 @@ function setup(){
 	addParagraph(queryString);
 	var urlParams = new URLSearchParams(queryString);
 	
-	
+	//calls set up for appropriate page
 	if (urlParams.has('page')){
 		var page = urlParams.get('page');
 		switch(page){
@@ -81,6 +84,9 @@ function setup(){
 				break;
 			case "contact":
 				contact();
+				break;
+			case "donate":
+				donate();
 				break;
 			default:
 				home();
