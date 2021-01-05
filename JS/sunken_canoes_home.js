@@ -46,6 +46,25 @@ function contact(){
 	document.getElementById("form").removeAttribute("hidden");	
 }
 
+//when the menu button is clicked, will toggle the dropdown menu
+function menu_toggle(){
+	var all = document.getElementsByClassName('dropdown-content');
+	for (var i = 0; i < all.length; i++) {  
+		if(all[i].style.display != "block"){
+			document.getElementById('menu').style.background = "#0080ff";
+			console.log("turn on");
+			all[i].style.display = "block";
+		}
+		else{
+			document.getElementById('menu').style.background = "#80ffff";
+			console.log("turn off");
+			all[i].style.display = "none";
+		}
+			
+	}
+	
+}
+
 function addSong(name){
 	var song = document.createElement('audio');
 	song.controls = "controls";
@@ -63,7 +82,7 @@ function addParagraph(text){
 
 //Checks variables in URL and sets page up appropriately
 function setup(){
-	
+
 	//get the parameters from the URL
 	var queryString = window.location.search;
 	addParagraph(queryString);

@@ -22,7 +22,7 @@ label{
 display: block;
   width: 100%;
   border: none;
-  background-color: #80ffff;
+  background: #80ffff;
   color: black;
   padding: 14px 28px;
   font-size: 16px;
@@ -66,10 +66,10 @@ display: block;
 .dropdown-content a:hover {background: #00ffff;}
 
 /* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {display: block;}
+//.dropdown:hover .dropdown-content {display: block;}
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
-.dropdown:hover .dropbtn {background: #0080ff;}
+//.dropdown:hover .dropbtn {background: #0080ff;}
 
 #below_menu{
 	background-image: linear-gradient(#00ffff, #0000ff);
