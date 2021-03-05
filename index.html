@@ -7,11 +7,18 @@
 
 </head>
 <link rel="stylesheet" type="text/css" href="CSS/sunken_canoes.css?version=1"> <!-- the ?version=1 should make it so that the css file will update properly -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+ <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+<!-- Always remember to call the above files first before calling the bootstrap.min.js file -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
 
 <body onload="setup()">
 
-<h1>THE SUNKEN CANOES</h1>
 
+
+<!--
+	<h1>THE SUNKEN CANOES</h1>
 <div class="dropdown">
   <button class="dropbtn">Menu</button>
   <div class="dropdown-content">
@@ -21,45 +28,70 @@
 	<a onclick="donate()" id="donate_btn" type="button">Donate</a>
   </div>
 </div>
+-->
+<img  class="float-center rounded-circle titleLogo center" src="SunkenCanoesLogo.png">
 
+<nav class="navbar navbar-expand-lg navbar-light badge-info dropdown">
+	
+	<button class="navbar-toggler dropbtn" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+	  <span class="navbar-toggler-icon"></span>
+	</button>
+  
+	<div class="collapse navbar-collapse dropdown-content" id="navbarCollapse">
+	
+    	<a  onclick="home()" id="home_btn" >Home</a>
+  		<a   onclick="music()" id="music_btn" >Music</a>
+		<a   onclick="contact()" id="contact_btn" >Contact</a>
+		<a onclick="donate()" id="donate_btn" type="button">Donate</a>
+  
+	</div>
+  </nav>
 
-
-<div id = "main_stuff"></div>
+<div id = "below_menu">
+	<div id = "main_stuff"></div>
 
 <!-- stuff for contact page, stays hidden -->
-<form 
-  hidden ="true"
-  action="https://formspree.io/f/mqkgbwwo"
-  method="POST"
-  id = "form"
->
-  <label>
-    Your contact information (optional):
-    <input type="text" name="_replyto">
-  </label>
-  <div></div>
-  <label>
-    Your message:					   
-    <textarea name="message"></textarea>
-  </label>
+	<form 
+	  hidden ="true"
+	  action="https://formspree.io/f/mqkgbwwo"
+	  method="POST"
+	  id = "form"
+	>
+	  <label>
+	    Your contact information (optional):
+	    <input type="text" name="_replyto">
+	  </label>
+	  <div></div>
+	  <label>
+	    Your message:					   
+	    <textarea name="message"></textarea>
+	  </label>
 
-  <!-- your other form fields go here -->
-<div></div>
-  <button type="submit">Send</button>
-</form>
+
+	<div></div>
+	  <button type="submit" style="margin:10px"";>Send</button>
+	</form>
 
 <!-- stuff for paypal, stays hidden -->
 
-<form action="https://www.paypal.com/donate" method="post" target="_top" id="paypal" hidden="true">
-<input type="hidden" name="cmd" value="_donations" />
-<input type="hidden" name="business" value="VH6VAEKFJYYTC" />
-<input type="hidden" name="currency_code" value="CAD" />
-<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
-<img alt="" border="0" src="https://www.paypal.com/en_CA/i/scr/pixel.gif" width="1" height="1" />
-</form>
+	<form action="https://www.paypal.com/donate" method="post" target="_top" id="paypal" hidden="true">
+	<input type="hidden" name="cmd" value="_donations" />
+	<input type="hidden" name="business" value="VH6VAEKFJYYTC" />
+	<input type="hidden" name="currency_code" value="CAD" />
+	<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+	<img alt="" border="0" src="https://www.paypal.com/en_CA/i/scr/pixel.gif" width="1" height="1" />
+	</form>
+	
+	<img 
+    src="SunkenCanoe.svg" 
+    class="sunken_canoe" />
+</div>
 
 
 
-<script src="JS/sunken_canoes_home.js?version=1"></script>
+<script src="JS/sunken_canoes_home.js?version=1">
+
+
+</script>
 </body>
 </html>

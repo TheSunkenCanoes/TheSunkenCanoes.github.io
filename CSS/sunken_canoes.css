@@ -1,13 +1,29 @@
 @charset "ISO-8859-1";
 
+header {
+  background: rgb(7, 44, 124);
+}
+
+body {
+  background: rgb(7, 44, 124);
+}
 
 h1 {
-	
+  text-align: center;
+  background-image: white;
+}
+
+p {
+  margin-left: 10px;
+}
+
+label {
+  margin-left: 10px;
 }
 
 /* Dropdown Button */
 .dropbtn {
-display: block;
+  display: block;
   width: 100%;
   border: none;
   background-color: #80ffff;
@@ -16,13 +32,21 @@ display: block;
   font-size: 16px;
   cursor: pointer;
   text-align: center;
+}
 
+.titleLogo {
+  width: 20%;
+  background-color: #0000ff;
+  background: #0000ff;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* The container <div> - needed to position the dropdown content */
 .dropdown {
   position: relative;
- display: inline-block;
+  display: inline-block;
   width: 100%;
 }
 
@@ -30,11 +54,11 @@ display: block;
 .dropdown-content {
   display: none;
   position: absolute;
-  width:100%;
+  width: 100%;
   cursor: pointer;
   background: #80ffff;
   min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
 }
 
@@ -42,17 +66,47 @@ display: block;
 .dropdown-content a {
   width: 100%;
   color: black;
-  padding: 12px 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
   text-decoration: none;
+  text-align: center;
   cursor: pointer;
   display: block;
 }
 
 /* Change color of dropdown links on hover */
-.dropdown-content a:hover {background: #00ffff;}
+.dropdown-content a:hover {
+  background: #00ffff;
+}
 
 /* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {display: block;}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
-.dropdown:hover .dropbtn {background: #0080ff;}
+.dropdown:hover .dropbtn {
+  background: #0080ff;
+}
+
+#below_menu {
+  background-image: linear-gradient(#00ffff, #0000ff);
+  position: absolute;
+  min-height: 150%;
+  min-width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.sunken_canoe {
+  position: absolute;
+  background-position: center;
+  background-size: cover;
+  bottom: 0px;
+  width: 100%;
+}
