@@ -1,77 +1,37 @@
-// modified from https://gist.github.com/literallylara/7ece1983fab47365108c47119afb51c7
-// Reference:
-// http://www-mmsp.ece.mcgill.ca/documents/audioformats/wave/wave.html
-// https://de.wikipedia.org/wiki/RIFF_WAVE
 
-var DUR = 1     // duration in seconds
-var NCH = 1     // number of channels
-var SPS = 44100 // samples per second
-var BPS = 1     // bytes per sample
+ let chords = {
+    chords:[
+        {name:"MAJOR", intervals:[0,4,7]},
+        {name:"MINOR", intervals:[0,3,6]},
+        {name:"Maj6",intervals:[0,4,7,9]},
+        // {name:"min6",intervals:[0]},
+        // {name:"maj7",intervals:[0]},
+        // {name:"dominant7",intervals:[0]},
+        // {name:"minor7",intervals:[0]},
+        // {name:"halfDim7",intervals:[0]},
+        // {name:"dim7",intervals:[0]},
+        // {name:"minMaj7",intervals:[0]},
+        // {name:"maj9",intervals:[0]},
+        // {name:"min9",intervals:[0]},
+        // {name:"dominant9",intervals:[0]},
+        // {name:"7(b9)",intervals:[0]},
+        // {name:"7(#9)",intervals:[0]},
+    ]
+ };
+ var currentChord;
+newChord();
 
-// PCM Data
-// --------------------------------------------
-// Field           | Bytes | Content
-// --------------------------------------------
-// ckID            |     4 | "fmt "
-// cksize          |     4 | 0x0000010 (16)
-// wFormatTag      |     2 | 0x0001 (PCM)
-// nChannels       |     2 | NCH
-// nSamplesPerSec  |     4 | SPS
-// nAvgBytesPerSec |     4 | NCH * BPS * SPS
-// nBlockAlign     |     2 | NCH * BPS * NCH
-// wBitsPerSample  |     2 | BPS * 8
+function newChord(){
+    //remove old chord
+    document.getElementById("chord").innerHTML="";
 
-// data_size = DUR * NCH * SPS * BPS
-// file_size = 44 (Header) + data_size
-
-function dec2hex(n, l)
-{
-	n = n.toString(16);
-	return new Array(l*2-n.length+1).join("0") + n;
+    //add new chord
+    currentChord = Math.floor(Math.random()* chords.chords.length);
+    var WAV = createChord(chords.chords[currentChord].intervals);
+    document.getElementById("chord").appendChild(WAV);
+    WAV.play();   
 }
 
-function hex2str(hex)
-{
-	var str = [];
-
-	if (hex.length%2) { throw new Error("hex2str(\"" + hex + "\"): invalid input (# of digits must be divisible by 2)"); }
-
-	for(var i = 0; i < hex.length; i += 2)
-	{
-		str.push(String.fromCharCode(parseInt(hex.substr(i,2),16)));
-	}
-
-	return str.reverse().join("");
+function reveal(){
+    alert(chords.chords[currentChord].name);
 }
-
-function put(n, l)
-{
-	return hex2str(dec2hex(n,l));
-}
-
-var size = DUR * NCH * SPS * BPS;
-var data = "RIFF" + put(44 + size, 4) + "WAVEfmt " + put(16, 4);
-
-data += put(1              , 2); // wFormatTag (pcm)
-data += put(NCH            , 2); // nChannels
-data += put(SPS            , 4); // nSamplesPerSec
-data += put(NCH * BPS * SPS, 4); // nAvgBytesPerSec
-data += put(NCH * BPS      , 2); // nBlockAlign
-data += put(BPS * 8        , 2); // wBitsPerSample
-
-data += "data" + put(size, 4);
-
-for (var i = 0; i < DUR; i++)
-{		
-	for(var j = 0; j < SPS; j++)
-	{
-		data += put(Math.floor((Math.sin(j/SPS * Math.PI * 2 * 440) + 1) / 2 * Math.pow(2, BPS * 8)), BPS);
-	}
-}
-
-var WAV = new Audio("data:Audio/WAV;base64," + btoa(data));
-WAV.setAttribute("controls","controls");
-WAV.play();
-
-document.body.appendChild(WAV);
-
