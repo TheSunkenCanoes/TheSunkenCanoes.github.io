@@ -97,3 +97,35 @@ function createChord(intervals){
     return WAV;
 }
 
+
+
+
+function createArpeggio(intervals){
+
+    var numIntervals = intervals.length;
+    
+    var size = DUR * NCH * SPS * BPS;
+    var data = "RIFF" + put(44 + size, 4) + "WAVEfmt " + put(16, 4);
+
+    data += put(1              , 2); // wFormatTag (pcm)
+    data += put(NCH            , 2); // nChannels
+    data += put(SPS            , 4); // nSamplesPerSec
+    data += put(NCH * BPS * SPS, 4); // nAvgBytesPerSec
+    data += put(NCH * BPS      , 2); // nBlockAlign
+    data += put(BPS * 8        , 2); // wBitsPerSample
+
+    data += "data" + put(size, 4);
+
+    
+    data += createChordWave(intervals);
+
+
+    var WAV = new Audio("data:Audio/WAV;base64," + btoa(data));
+    WAV.setAttribute("controls","controls");
+ 
+
+    
+
+    return WAV;
+}
+
