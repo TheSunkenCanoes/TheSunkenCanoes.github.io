@@ -29,20 +29,22 @@
   </div>
 </div>
 -->
-<img  class="float-center rounded-circle titleLogo center" src="SunkenCanoesLogo.png">
+<!--<img  class="float-center rounded-circle titleLogo center" src="SunkenCanoesLogo.png">-->
 
-<nav class="navbar navbar-expand-lg navbar-light badge-info dropdown">
-	
+<nav class="navbar navbar-expand-lg navbar-dark badge-info dropdown">
+	<img  class="float-center rounded-circle titleLogo center" src="SunkenCanoesLogo.png">
+
 	<button class="navbar-toggler dropbtn" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
 	  <span class="navbar-toggler-icon"></span>
 	</button>
   
 	<div class="collapse navbar-collapse dropdown-content" id="navbarCollapse">
 	
-    	<a  onclick="home()" id="home_btn" >Home</a>
-  		<a   onclick="music()" id="music_btn" >Music</a>
-		<a   onclick="contact()" id="contact_btn" >Contact</a>
-		<a onclick="donate()" id="donate_btn" type="button">Donate</a>
+    	<a  onclick="route('home')" id="home_btn" >Home</a>
+  		<a   onclick="route('music')" id="music_btn" >Music</a>
+		<a   onclick="route('contact')" id="contact_btn" >Contact</a>
+		<a onclick="route('donate')" id="donate_btn" type="button">Donate</a>
+		<a onclick="route('practice')" id="practice_btn" type="button">Practice</a>
   
 	</div>
   </nav>

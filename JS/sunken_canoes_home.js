@@ -9,6 +9,27 @@ function clearMain(){
 	document.getElementById("paypal").hidden = true;
 }
 
+
+function route(destination){
+	switch(destination){
+	case "home":
+		home();
+		break;
+	case "music":
+		music();
+		break;
+	case "contact":
+		contact();
+		break;
+	case "donate":
+		donate();
+		break;
+	case "practice":
+		practice();
+		break;
+	}
+}
+
 function home(){
 	  clearMain();
 	  window.history.replaceState(null, null, "?page=home");
@@ -46,10 +67,15 @@ function contact(){
 	document.getElementById("form").removeAttribute("hidden");	
 }
 
+function practice(){
+	window.location.href = 'practice.html'
+}
+
+
 function addSong(name){
 	var song = document.createElement('audio');
 	song.controls = "controls";
-	song.src = name;
+	song.src = "songs/"+name;
 	song.id = name;
 	song.type = "audio/mpeg";
 	document.getElementById("main_stuff").appendChild(song);
