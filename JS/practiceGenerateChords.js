@@ -49,7 +49,7 @@ function put(n, l)
 	return hex2str(dec2hex(n,l));
 }
 
-function createChordWave(intervals){
+function createChordWave(intervals,startNote){
     var data = "";
     for (var i = 0; i < DUR; i++)
     {		
@@ -60,7 +60,7 @@ function createChordWave(intervals){
             var size = intervals.length;
             for(var x in intervals){
                 var currentInterval = intervals[x];
-                var frequency = 440*Math.pow(2,currentInterval/12);//formula to calculate frequency: fn = f0*2^(interval in semitones/12)
+                var frequency = startNote*Math.pow(2,currentInterval/12);//formula to calculate frequency: fn = f0*2^(interval in semitones/12)
                 current += Math.floor((Math.sin(j/SPS * Math.PI * 2 * frequency) + 1) / 2 * Math.pow(2, BPS * 8));
             }
             current/=size;
@@ -71,7 +71,7 @@ function createChordWave(intervals){
     return data;
 }
 
-function createChord(intervals){
+function createChord(intervals,startNote){
 
     var size = DUR * NCH * SPS * BPS;
     var data = "RIFF" + put(44 + size, 4) + "WAVEfmt " + put(16, 4);
@@ -85,47 +85,18 @@ function createChord(intervals){
 
     data += "data" + put(size, 4);
 
-    data += createChordWave(intervals);
+    data += createChordWave(intervals,startNote);
 
 
     var WAV = new Audio("data:Audio/WAV;base64," + btoa(data));
     WAV.setAttribute("controls","controls");
- 
+    WAV.play();
 
     
 
     return WAV;
 }
 
-
-
-
-function createArpeggio(intervals){
-
-    var numIntervals = intervals.length;
+function createArpeggio(){
     
-    var size = DUR * NCH * SPS * BPS;
-    var data = "RIFF" + put(44 + size, 4) + "WAVEfmt " + put(16, 4);
-
-    data += put(1              , 2); // wFormatTag (pcm)
-    data += put(NCH            , 2); // nChannels
-    data += put(SPS            , 4); // nSamplesPerSec
-    data += put(NCH * BPS * SPS, 4); // nAvgBytesPerSec
-    data += put(NCH * BPS      , 2); // nBlockAlign
-    data += put(BPS * 8        , 2); // wBitsPerSample
-
-    data += "data" + put(size, 4);
-
-    
-    data += createChordWave(intervals);
-
-
-    var WAV = new Audio("data:Audio/WAV;base64," + btoa(data));
-    WAV.setAttribute("controls","controls");
- 
-
-    
-
-    return WAV;
 }
-
