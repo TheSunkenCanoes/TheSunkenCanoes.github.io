@@ -21,8 +21,8 @@ function route(destination){
 	case "contact":
 		contact();
 		break;
-	case "donate":
-		donate();
+	case "download":
+		download();
 		break;
 	case "practice":
 		practice();
@@ -33,29 +33,51 @@ function route(destination){
 function home(){
 	  clearMain();
 	  window.history.replaceState(null, null, "?page=home");
-	  addParagraph("The Sunken Canoes is a socially-distanced band based in Ottawa Ontario, started in the summer of 2020. We are currently working on creating our first album.");
+	  addParagraph("The Sunken Canoes started in Ottawa Ontario in the summer of 2020. We wrote some songs, recorded them, and eventually released an album.");
+	  var albumArt = document.createElement('img');
+	  albumArt.src = "theSunkenCanoesAlbumCover.png";
+	  albumArt.style.maxInlineSize="50%";
+	  albumArt.style.paddingLeft="10px";
+	  document.getElementById("main_stuff").appendChild(albumArt);
+
 }
 
 function music(){
 	clearMain();
 	window.history.replaceState(null, null, "?page=music");
 
-	addParagraph("THE SHARKENING\nThis spooky song is about sharks. It is still a work in progress");
+	addParagraph("Space Drugs\nA song about drugs from space");
+	addSong("Space Drugs.mp3");
+
+	addParagraph("The Sunken Canoes\nHey! That's the name of the band!");
+	addSong("The Sunken Canoes.mp3");
+
+	addParagraph("Shark Song\nA scary (not really) song about sharks");
 	addSong("Shark Song.mp3");
 	
-	addParagraph("FALLING\nThis sad song is about falling. It is still a work in progress.");
-	addSong("Falling.mp3");
+	addParagraph("Think I Love You\nIs this a love song? Perhaps.");
+	addSong("Think I Love You.mp3");
 	
-	addParagraph("THINK I LOVE YOU\nThis is a sweet love song about love. It is still a work in progress, and the metronome will not be included in the final version.");
-	addSong("think I love you.mp3");
+	addParagraph("This Song Was Not Written To Launder Money\nA song that contains only true facts.");
+	addSong("This Song Was Not Written To Launder Money.mp3");
+
+	addParagraph("Goodbye\nAll good things must someday end.");
+	addSong("Goodbye.mp3");
 }
 
-function donate(){
+function download(){
 	clearMain();
-	window.history.replaceState(null, null, "?page=donate");
-	
-	
-	addParagraph("All donations will go towards helping us create new music.");
+	window.history.replaceState(null, null, "?page=download");
+	addParagraph("Get our first album here:");
+	var download = document.createElement('a');
+	download.href = "songs/The Sunken Canoes.zip";
+	download.innerText = "Download";
+	download.setAttribute("download","");
+	download.setAttribute("class","btn btn-primary btn-lg")
+	download.style.marginLeft = "10px";
+	document.getElementById("main_stuff").appendChild(download);
+
+	addParagraph("Our music is available for free. If you like it, consider leaving a donation.");
 	
 	document.getElementById("paypal").removeAttribute("hidden");	
 }
@@ -111,8 +133,8 @@ function setup(){
 			case "contact":
 				contact();
 				break;
-			case "donate":
-				donate();
+			case "download":
+				download();
 				break;
 			default:
 				home();
