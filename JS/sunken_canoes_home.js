@@ -35,7 +35,7 @@ function home(){
 	  window.history.replaceState(null, null, "?page=home");
 	  addParagraph("The Sunken Canoes started in Ottawa Ontario in the summer of 2020. We wrote some songs, recorded them, and eventually released an album.");
 	  var albumArt = document.createElement('img');
-	  albumArt.src = "theSunkenCanoesAlbumCover.png";
+	  albumArt.src = "TheSunkenCanoesAlbum.jpg";
 	  albumArt.style.maxInlineSize="50%";
 	  albumArt.style.paddingLeft="10px";
 	  document.getElementById("main_stuff").appendChild(albumArt);
