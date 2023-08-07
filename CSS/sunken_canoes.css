@@ -6,6 +6,7 @@ header {
 
 body {
   background: rgb(7, 44, 124);
+  z-index: -2;
 }
 
 h1 {
@@ -97,6 +98,7 @@ label {
   min-width: 100%;
   margin: 0;
   padding: 0;
+  z-index: -2;
 }
 
 body {
@@ -110,6 +112,8 @@ body {
   background-size: cover;
   bottom: 0px;
   width: 100%;
+  z-index: -1;
+
 }
 
 .badge-info {
