@@ -34,9 +34,15 @@ function home(){
 	  clearMain();
 	  window.history.replaceState(null, null, "?page=home");
 	  addParagraph("The Sunken Canoes started in Ottawa Ontario in the summer of 2020. We wrote some songs, recorded them, and eventually released an album.");
+	  addParagraph("See our album on:");
+	  addLink("https://music.youtube.com/playlist?list=OLAK5uy_mvP-weMxshpph09WyTU85eIfCShc9WHaE","Youtube Music");
+	  addLink("https://open.spotify.com/album/6YpPobq51HL2ZnTpkpHmH9","Spotify");
+	  addLink("https://music.apple.com/us/artist/the-sunken-canoes/1700532646","Apple Music");
+	  addParagraph("");
+
 	  var albumArt = document.createElement('img');
 	  albumArt.src = "TheSunkenCanoesAlbum.jpg";
-	  albumArt.style.maxInlineSize="50%";
+	  albumArt.style.maxInlineSize="25%";
 	  albumArt.style.paddingLeft="10px";
 	  document.getElementById("main_stuff").appendChild(albumArt);
 
@@ -107,6 +113,17 @@ function addParagraph(text){
 	var para = document.createElement("P");
 	  para.innerText = text;
 	  document.getElementById("main_stuff").appendChild(para);	  
+}
+
+function addLink(link,linkText){
+	var a = document.createElement("A");
+		a.href=link;
+		a.innerText=linkText;
+		a.style.color = "#00008B";
+		a.style.textDecoration = "underline";
+		a.style.marginLeft = "10px";
+		document.getElementById("main_stuff").appendChild(a);	
+
 }
 
 //Checks variables in URL and sets page up appropriately
